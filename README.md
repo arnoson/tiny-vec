@@ -1,6 +1,6 @@
 # Tiny Vec
 
-A super tiny (0.25kb gzip) 2d vector library.
+A super tiny (0.3kb gzip) 2d vector library.
 
 ## Install
 
@@ -13,41 +13,39 @@ npm i tiny-vec
 ```js
 import vec from "tiny-vec"
 
-console.log(vec(10, 20).distance(50, 30))
-```
-
-```js
-const myVec = vec(100, 0)
-const angle = vec(43, 20).angle(...myVec.xy) // see: Caveats
+const a = vec(10, 20)
+const b = vec(15, 3).multiply(2)
+console.log(a.distance(b))
 ```
 
 ## Documentation
 
 ```js
-const myVec = vec(x: number, y: number)
+myVec = vec(x: number, y: number)
+// or
+myVec = vec({ x: number, y: number })
 
 // Operations
-myVec.add(a: number, b?: number) => vec
-myVec.subtract(a: number, b?: number) => vec
-myVec.multiply(a: number, b?: number) => vec
-myVec.divide(a: number, b?: number) => vec
+myVec.add({ x: number, y: number }) => vec
+myVec.subtract({ x: number, y: number }) => vec
+myVec.multiply(multiplier: number) => vec
+myVec.divide(divisor: number) => vec
 myVec.rotate(angle: number) => vec // angle in radians
 myVec.normal() => vec
 myVec.normalize() => vec
 
 // You can chain multiple operations together:
-vec(10, 20).add(40, 5).multiply(2)
+vec({ x: 10, y: 20 }).normal().multiply(2)
 
 // Methods
 myVec.length() => number
-myVec.distance(a: number, b: number) => number
-myVec.dot(a: number, b: number) => number
-myVec.angle(a: number, b: number) => number // angle in radians
+myVec.distance({ x: number, y: number }) => number
+myVec.dot({ x: number, y: number }) => number
+myVec.angle({ x: number, y: number }) => number // angle in radians
 
 // Properties
 myVec.x: number
 myVec.y: number
-myVec.xy: [number, number] // Useful for array spread (see: Caveats)
 ```
 
 ## Caveats

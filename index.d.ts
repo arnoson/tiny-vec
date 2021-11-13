@@ -1,20 +1,19 @@
 export interface Vec {
   x: number
   y: number
-  xy: [number, number]
-  add: (a: number, b?: number) => Vec
-  subtract: (a: number, b?: number) => Vec
-  multiply: (a: number, b?: number) => Vec
-  divide: (a: number, b?: number) => Vec
+  add: (other: { x: number; y: number }) => Vec
+  subtract: (other: { x: number; y: number }) => Vec
+  multiply: (multiplier: number) => Vec
+  divide: (divisor: number) => Vec
+  distance: (other: { x: number; y: number }) => number
   length: () => number
-  distance: (a: number, b: number) => number
-  dot: (a: number, b: number) => number
-  normalize: () => Vec
+  dot: (other: { x: number; y: number }) => number
   normal: () => Vec
-  angle: (a: number, b: number) => number
+  normalize: () => Vec
+  angle: (other: { x: number; y: number }) => number
   rotate: (angle: number) => Vec
 }
 
-declare const vec: (x: number, y: number) => Vec
+declare const vec: (a: { x: number; y: number } | number, y: number) => Vec
 
-export { vec as default, vec }
+export default vec
