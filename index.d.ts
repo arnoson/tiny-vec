@@ -14,6 +14,6 @@ export interface Vec {
   rotate: (angle: number) => Vec
 }
 
-declare const vec: (a: { x: number; y: number } | number, y: number) => Vec
+declare const vec: (a: { x: number; y: number } | number, y?: number) => Vec
 
 export default vec
