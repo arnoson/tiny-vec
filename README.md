@@ -18,10 +18,10 @@ console.log(vec(10, 20).distance(50, 30))
 
 ```js
 const myVec = vec(100, 0)
-const angle = vec(43, 20).angle(...myVec.xy) // See: Caveats
+const angle = vec(43, 20).angle(...myVec.xy) // see: Caveats
 ```
 
-## Operations and Methods
+## Documentation
 
 ```js
 const myVec = vec(x: number, y: number)
@@ -35,14 +35,19 @@ myVec.rotate(angle: number) => vec // angle in radians
 myVec.normal() => vec
 myVec.normalize() => vec
 
+// You can chain multiple operations together:
+vec(10, 20).add(40, 5).multiply(2)
+
 // Methods
 myVec.length() => number
 myVec.distance(a: number, b: number) => number
 myVec.dot(a: number, b: number) => number
 myVec.angle(a: number, b: number) => number // angle in radians
 
-// You can chain multiple operations together:
-vec(10, 20).add(40, 5).multiply(2)
+// Properties
+myVec.x: number
+myVec.y: number
+myVec.xy: [number, number] // Useful for array spread (see: Caveats)
 ```
 
 ## Caveats
