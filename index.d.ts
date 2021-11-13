@@ -1,6 +1,7 @@
 export interface Vec {
   x: number
   y: number
+  xy: [number, number]
   add: (a: number, b?: number) => Vec
   subtract: (a: number, b?: number) => Vec
   multiply: (a: number, b?: number) => Vec
