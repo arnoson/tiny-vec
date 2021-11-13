@@ -13,9 +13,7 @@ npm i tiny-vec
 ```js
 import vec from "tiny-vec"
 
-const a = vec(10, 20)
-const b = vec(50, 30).add(20)
-console.log(a.distance(b))
+console.log(vec(10, 20).distance(50, 30))
 ```
 
 ```js
