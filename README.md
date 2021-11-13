@@ -47,20 +47,3 @@ myVec.angle({ x: number, y: number }) => number // angle in radians
 myVec.x: number
 myVec.y: number
 ```
-
-## Caveats
-
-To keep things simple and the implementation tiny you can't use another `vec()` as an input to any of the operations.
-
-```js
-const myVec = vec(3, 4)
-
-// This won't work!
-vec(10, 20).add(myVec)
-
-// Use this instead
-vec(10, 20).add(myVec.x, myVec.y)
-
-// Or this, if you are feeling fancy
-vec(10, 20).add(...myVec.xy)
-```
