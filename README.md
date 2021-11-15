@@ -11,7 +11,7 @@ npm i tiny-vec
 ## Examples
 
 ```js
-import vec from "tiny-vec"
+import Vec from "tiny-vec"
 
 const a = new Vec(10, 20)
 const b = new Vec(15, 3).multiply(2)
