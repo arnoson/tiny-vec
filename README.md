@@ -13,37 +13,40 @@ npm i tiny-vec
 ```js
 import vec from "tiny-vec"
 
-const a = vec(10, 20)
-const b = vec(15, 3).multiply(2)
+const a = new Vec(10, 20)
+const b = new Vec(15, 3).multiply(2)
 console.log(a.distance(b))
 ```
 
 ## Documentation
 
 ```js
-myVec = vec(x: number, y: number)
-// or
-myVec = vec({ x: number, y: number })
+class Vec {
+  constructor(a: Point | number, b?: number)
+  x: number
+  y: number
+  add(other: Point): Vec
+  subtract(other: Point): Vec
+  multiply(multiplier: number): Vec
+  divide(divisor: number): Vec
+  distance(other: Point): number
+  length(): number
+  dot(other: Point): number
+  normal(): Vec
+  normalize(): Vec
+  angle(other: Point): number // angle in radians
+  rotate(angle: number): Vec // angle in radians
+}
 
-// Operations
-myVec.add({ x: number, y: number }) => vec
-myVec.subtract({ x: number, y: number }) => vec
-myVec.multiply(multiplier: number) => vec
-myVec.divide(divisor: number) => vec
-myVec.rotate(angle: number) => vec // angle in radians
-myVec.normal() => vec
-myVec.normalize() => vec
+// Create a new `Vec`
+const vec = new Vec(10, 20) // or `new Vec({ x: 10, y: 20 })`
 
-// You can chain multiple operations together:
-vec({ x: 10, y: 20 }).normal().multiply(2)
+// You can easily chain multiple operations together.
+vec.normal().multiply(2).add({ x: 1, y: 2 })
 
-// Methods
-myVec.length() => number
-myVec.distance({ x: number, y: number }) => number
-myVec.dot({ x: number, y: number }) => number
-myVec.angle({ x: number, y: number }) => number // angle in radians
-
-// Properties
-myVec.x: number
-myVec.y: number
+// `Vec`s are immutable, they return a new `Vec` for each operation.
+const a = new Vec({ x: 10, y: 20 }})
+const b = a.add({ x: 5, y: 5 })
+// b.x = 15, b.y = 25
+// a.x = 10, a.y = 20
 ```

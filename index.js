@@ -1,27 +1,42 @@
-export default function vec(a, b) {
-  const x = a.x ?? a
-  const y = a.y ?? b
-  return {
-    x,
-    y,
-    add: other => vec(x + other.x, y + other.y),
-    subtract: other => vec(x - other.x, y - other.y),
-    multiply: multiplier => vec(x * multiplier, y * multiplier),
-    divide: divisor => vec(x / divisor, y / divisor),
-    distance: other => Math.hypot(x - other.x, y - other.y),
-    length: () => Math.hypot(x, y),
-    dot: other => x * other.x + y * other.y,
-    normal: () => vec(-y, x),
-    normalize: () => vec(x, y).divide(Math.hypot(x, y)),
-    angle: other =>
-      Math.acos(
-        (x * other.x + y * other.y) /
-          (Math.hypot(x, y) * Math.hypot(other.x, other.y))
-      ),
-    rotate: angle =>
-      vec(
-        x * Math.cos(angle) - y * Math.sin(angle),
-        x * Math.sin(angle) + y * Math.cos(angle)
-      ),
+export default class Vec {
+  constructor(a, b) {
+    this.x = a.x ?? a
+    this.y = a.y ?? b
+  }
+  add({ x, y }) {
+    return new Vec(this.x + x, this.y + y)
+  }
+  subtract({ x, y }) {
+    return new Vec(this.x - x, this.y - y)
+  }
+  multiply(multiplier) {
+    return new Vec(this.x * multiplier, this.y * multiplier)
+  }
+  divide(divisor) {
+    return new Vec(this.x / divisor, this.y / divisor)
+  }
+  distance({ x, y }) {
+    return Math.hypot(this.x - x, this.y - y)
+  }
+  length() {
+    return Math.hypot(this.x, this.y)
+  }
+  dot({ x, y }) {
+    return this.x * x + this.y * y
+  }
+  normal() {
+    return new Vec(-this.y, this.x)
+  }
+  normalize() {
+    return this.divide(Math.hypot(this.x, this.y))
+  }
+  angle({ x, y }) {
+    return Math.acos(this.dot({ x, y }) / (this.length() * Math.hypot(x, y)))
+  }
+  rotate(angle) {
+    return new Vec(
+      this.x * Math.cos(angle) - this.y * Math.sin(angle),
+      this.x * Math.sin(angle) + this.y * Math.cos(angle)
+    )
   }
 }

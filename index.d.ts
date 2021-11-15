@@ -1,19 +1,20 @@
-export interface Vec {
+export type Point = { x: number; y: number }
+
+declare class Vec {
+  constructor(a: Point | number, b?: number)
   x: number
   y: number
-  add: (other: { x: number; y: number }) => Vec
-  subtract: (other: { x: number; y: number }) => Vec
-  multiply: (multiplier: number) => Vec
-  divide: (divisor: number) => Vec
-  distance: (other: { x: number; y: number }) => number
-  length: () => number
-  dot: (other: { x: number; y: number }) => number
-  normal: () => Vec
-  normalize: () => Vec
-  angle: (other: { x: number; y: number }) => number
-  rotate: (angle: number) => Vec
+  add(other: Point): Vec
+  subtract(other: Point): Vec
+  multiply(multiplier: number): Vec
+  divide(divisor: number): Vec
+  distance(other: Point): number
+  length(): number
+  dot(other: Point): number
+  normal(): Vec
+  normalize(): Vec
+  angle(other: Point): number
+  rotate(angle: number): Vec
 }
 
-declare const vec: (a: { x: number; y: number } | number, y?: number) => Vec
-
-export default vec
+export default Vec
