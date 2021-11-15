@@ -11,7 +11,7 @@ npm i tiny-vec
 ## Examples
 
 ```js
-import Vec from "tiny-vec"
+import ec from "tiny-vec"
 
 const a = new Vec(10, 20)
 const b = new Vec(15, 3).multiply(2)
@@ -21,6 +21,8 @@ console.log(a.distance(b))
 ## Documentation
 
 ```js
+type Point = { x: number; y: number }
+
 class Vec {
   constructor(a: Point | number, b?: number)
   x: number
