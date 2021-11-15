@@ -34,9 +34,8 @@ export default class Vec {
     return Math.acos(this.dot({ x, y }) / (this.length() * Math.hypot(x, y)))
   }
   rotate(angle) {
-    return new Vec(
-      this.x * Math.cos(angle) - this.y * Math.sin(angle),
-      this.x * Math.sin(angle) + this.y * Math.cos(angle)
-    )
+    const sin = Math.sin(angle)
+    const cos = Math.cos(angle)
+    return new Vec(this.x * cos - this.y * sin, this.x * sin + this.y * cos)
   }
 }
