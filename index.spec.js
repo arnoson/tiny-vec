@@ -1,23 +1,40 @@
 import Vec from "./index.js"
 
 describe("vec", () => {
-  test("add", () =>
+  test("add", () => {
     expect(new Vec(15, 30).add({ x: -20, y: 15 })).toMatchObject({
       x: -5,
       y: 45,
-    }))
+    })
+    expect(new Vec(15, 30).add(10)).toMatchObject({
+      x: 25,
+      y: 40,
+    })
+  })
 
-  test("subtract", () =>
+  test("subtract", () => {
     expect(new Vec(10, 20).subtract({ x: 5, y: 100 })).toMatchObject({
       x: 5,
       y: -80,
-    }))
+    })
+    expect(new Vec(10, 20).subtract(100)).toMatchObject({
+      x: -90,
+      y: -80,
+    })
+  })
 
-  test("multiply", () =>
-    expect(new Vec(10, 20).multiply(2)).toMatchObject({ x: 20, y: 40 }))
+  test("multiply", () => {
+    expect(new Vec(10, 20).multiply({ x: 2, y: 3 })).toMatchObject({
+      x: 20,
+      y: 60,
+    })
+    expect(new Vec(10, 20).multiply(2)).toMatchObject({ x: 20, y: 40 })
+  })
 
-  test("divide", () =>
-    expect(new Vec(10, 20).divide(2)).toMatchObject({ x: 5, y: 10 }))
+  test("divide", () => {
+    expect(new Vec(10, 20).divide({ x: 2, y: 4 })).toMatchObject({ x: 5, y: 5 })
+    expect(new Vec(10, 20).divide(2)).toMatchObject({ x: 5, y: 10 })
+  })
 
   test("length", () =>
     expect(new Vec(20, 20).length()).toBe(28.284271247461902))
